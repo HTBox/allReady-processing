@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2027
+VisualStudioVersion = 15.0.27130.2026
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AllReady.Processing", "AllReady.Processing\AllReady.Processing.csproj", "{C619B518-08A3-4CFC-BC22-CB0B4A63CB31}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AllReady.Processing", "AllReady.Processing\AllReady.Processing.csproj", "{C619B518-08A3-4CFC-BC22-CB0B4A63CB31}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AllReady.Processing.UnitTest", "..\AllReady.Processing.UnitTest\AllReady.Processing.UnitTest.csproj", "{CBA25B72-7C92-4C78-ABF6-1E35079214B5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{C619B518-08A3-4CFC-BC22-CB0B4A63CB31}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C619B518-08A3-4CFC-BC22-CB0B4A63CB31}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C619B518-08A3-4CFC-BC22-CB0B4A63CB31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBA25B72-7C92-4C78-ABF6-1E35079214B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBA25B72-7C92-4C78-ABF6-1E35079214B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBA25B72-7C92-4C78-ABF6-1E35079214B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBA25B72-7C92-4C78-ABF6-1E35079214B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
