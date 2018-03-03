@@ -15,7 +15,6 @@ namespace AllReady.Processing.UnitTest
 
             QueueTest.Run(item, mockTraceWriter.Object);
 
-
             mockTraceWriter.Verify(x => x.Trace(It.Is<TraceEvent>(e => e.Level == TraceLevel.Info && e.Message.Contains(item))), Times.Once);
         }
     }
