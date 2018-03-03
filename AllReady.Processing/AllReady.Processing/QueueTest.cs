@@ -10,7 +10,7 @@ namespace AllReady.Processing
         // local storage emulator.
 
         [FunctionName("QueueTest")]
-        public static void Run([QueueTrigger("queue-test", Connection = "")]string item, TraceWriter log)
+        public static void Run([QueueTrigger("queue-test")]string item, TraceWriter log)
         {            
             log.Info($"A message was dequeued from the queue-test queue: {item}");
         }
