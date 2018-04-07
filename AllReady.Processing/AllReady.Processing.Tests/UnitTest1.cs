@@ -4,6 +4,7 @@ using Shouldly;
 using Microsoft.Azure.WebJobs.Host;
 using SendGrid.Helpers.Mail;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace AllReady.Processing.Tests
 {
@@ -16,8 +17,7 @@ namespace AllReady.Processing.Tests
         public void TestMethod1()
         {
             // Arrange
-            var loggerMock = new Mock<TraceWriter>(new TraceWriter());
-            loggerMock.Setup(l => l.Info(It.IsAny<string>(), It.IsAny<string>()));
+            var loggerMock = new MockTrace();
             var expected = new Mail { From = new Email(EmailSentFrom, "AllReady"), Subject = "test" };
             var personalization = new Personalization();
             personalization.AddTo(new Email("test@gmail.com"));
@@ -25,10 +25,14 @@ namespace AllReady.Processing.Tests
 
             var incomingMessage = new QueuedEmailMessage { Subject = "test", Recipient = "test@gmail.com", Message = "simple text message" };
             // Act
-            ProcessEmailQueueMessage.Run("testItem", out Mail message, loggerMock.Object);
+            ProcessEmailQueueMessage.Run(@"{""Message"":""test"", ""Recepient"":""test@gmail.com"", ""Subject"":""test"" }", out Mail message, loggerMock);
             // Assert
             message.ShouldBe(expected);
         }
+
+        // TODO tests
+        // send a message that will not deserialize correctly
+        // have a missing from
 
         [Theory]
         [InlineData("test")]
@@ -65,13 +69,14 @@ namespace AllReady.Processing.Tests
         {
             public List<string> Infos = new List<string>();
 
+            public MockTrace(): base(TraceLevel.Verbose)
+            {
+            }
+
             public override void Trace(TraceEvent traceEvent)
             {
                 throw new System.NotImplementedException();
             }
-
-            public override void Info()
-            { }
         }
 
     }
