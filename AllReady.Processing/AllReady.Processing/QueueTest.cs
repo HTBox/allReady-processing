@@ -9,10 +9,10 @@ namespace AllReady.Processing
         // This function can be used locally to test interaction with your 
         // local storage emulator.
 
-        [FunctionName("QueueTest")]
-        public static void Run([QueueTrigger("queue-test", Connection = "")]string item, TraceWriter log)
-        {            
-            log.Info($"A message was dequeued from the queue-test queue: {item}");
-        }
+        //[FunctionName("QueueTest")]
+        //public static void Run([QueueTrigger("queue-test")]string item, TraceWriter log)
+        //{            
+        //    log.Info($"A message was dequeued from the queue-test queue: {item}");
+        //}
     }
 }
