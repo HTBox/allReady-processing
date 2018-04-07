@@ -1,8 +1,9 @@
 ﻿using Moq;
 using Xunit;
 using Shouldly;
-//using Microsoft.Azure.WebJobs.Host;
-//using SendGrid.Helpers.Mail;
+using Microsoft.Azure.WebJobs.Host;
+using SendGrid.Helpers.Mail;
+using System.Collections.Generic;
 
 namespace AllReady.Processing.Tests
 {
@@ -15,18 +16,18 @@ namespace AllReady.Processing.Tests
         public void TestMethod1()
         {
             // Arrange
-            //var loggerMock = new Mock<TraceWriter>();
-            //loggerMock.Setup(l => l.Info(It.IsAny<string>(), It.IsAny<string>()));
-            //var expected = new Mail { From = new Email(EmailSentFrom, "AllReady"), Subject = "test" };
-            //var personalization = new Personalization();
-            //personalization.AddTo(new Email("test@gmail.com"));
-            //expected.AddPersonalization(personalization);
+            var loggerMock = new Mock<TraceWriter>(new TraceWriter());
+            loggerMock.Setup(l => l.Info(It.IsAny<string>(), It.IsAny<string>()));
+            var expected = new Mail { From = new Email(EmailSentFrom, "AllReady"), Subject = "test" };
+            var personalization = new Personalization();
+            personalization.AddTo(new Email("test@gmail.com"));
+            expected.AddPersonalization(personalization);
 
-            //    var incomingMessage = new QueuedEmailMessage { Subject = "test", Recipient = "test@gmail.com", Message = "simple text message" };
-            //    // Act
-            //    ProcessEmailQueueMessage.Run("testItem", out Mail message, loggerMock.Object);
-            //    // Assert
-            //    message.ShouldBe(expected);
+            var incomingMessage = new QueuedEmailMessage { Subject = "test", Recipient = "test@gmail.com", Message = "simple text message" };
+            // Act
+            ProcessEmailQueueMessage.Run("testItem", out Mail message, loggerMock.Object);
+            // Assert
+            message.ShouldBe(expected);
         }
 
         [Theory]
@@ -58,6 +59,19 @@ namespace AllReady.Processing.Tests
         public interface IMockable
         {
             string Foo();
+        }
+
+        public class MockTrace : TraceWriter
+        {
+            public List<string> Infos = new List<string>();
+
+            public override void Trace(TraceEvent traceEvent)
+            {
+                throw new System.NotImplementedException();
+            }
+
+            public override void Info()
+            { }
         }
 
     }
