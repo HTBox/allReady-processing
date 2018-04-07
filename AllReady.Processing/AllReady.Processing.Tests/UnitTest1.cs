@@ -17,10 +17,10 @@ namespace AllReady.Processing.Tests
             // Arrange
             //var loggerMock = new Mock<TraceWriter>();
             //loggerMock.Setup(l => l.Info(It.IsAny<string>(), It.IsAny<string>()));
-            ////    var expected = new Mail { From = new Email(EmailSentFrom, "AllReady"), Subject = "test" };
-            //    var personalization = new Personalization();
-            //    personalization.AddTo(new Email("test@gmail.com"));
-            //    expected.AddPersonalization(personalization);
+            //var expected = new Mail { From = new Email(EmailSentFrom, "AllReady"), Subject = "test" };
+            //var personalization = new Personalization();
+            //personalization.AddTo(new Email("test@gmail.com"));
+            //expected.AddPersonalization(personalization);
 
             //    var incomingMessage = new QueuedEmailMessage { Subject = "test", Recipient = "test@gmail.com", Message = "simple text message" };
             //    // Act
@@ -43,12 +43,22 @@ namespace AllReady.Processing.Tests
 
             Assert.Equal("test", input);
             mock.Object.Foo().ShouldBe("fooReturn");
-            
+
         }
 
+        [Fact]
+        public void TestCiblingProject()
+        {
+            // Arrange
+            var t = new QueuedEmailMessage { Subject = "Test" };
+
+            // Assert
+            t.Subject.ShouldBe("Test");
+        }
         public interface IMockable
         {
             string Foo();
         }
+
     }
 }

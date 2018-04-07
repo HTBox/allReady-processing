@@ -15,6 +15,10 @@
     <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AllReady.Processing\AllReady.Processing.csproj" />
+  </ItemGroup>
+
 </Project>
 
 
