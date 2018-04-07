@@ -11,7 +11,7 @@ namespace AllReady.Processing
         [FunctionName("ProcessEmailQueueMessage")]
         [StorageAccount("AzureWebJobsStorage")]
         public static void Run([QueueTrigger("email-pending-deliveries")] string queueItem,
-            [SendGrid(ApiKey = "Authentication:SendGrid:ApiKey")] out Mail message, TraceWriter log)
+            [SendGrid(ApiKey = "AzureWebJobsSendGridApiKey")] out Mail message, TraceWriter log)
         {
             var queuedEmailMessage = JsonConvert.DeserializeObject<QueuedEmailMessage>(queueItem);
 
