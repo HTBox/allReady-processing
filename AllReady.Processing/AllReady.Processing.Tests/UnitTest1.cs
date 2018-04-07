@@ -1,6 +1,6 @@
 ﻿//using Moq;
 using Xunit;
-//using Shouldly;
+using Shouldly;
 //using Microsoft.Azure.WebJobs.Host;
 //using SendGrid.Helpers.Mail;
 
@@ -33,8 +33,8 @@ namespace AllReady.Processing.Tests
         [InlineData("test")]
         public void TestMethod2(string input)
         {
-            //input.ShouldBe("test");
-            //input.ShouldNotBe("not test");
+            input.ShouldBe("test");
+            input.ShouldNotBe("not test");
 
             Assert.Equal("test", input);
         }
