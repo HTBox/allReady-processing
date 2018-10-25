@@ -1,6 +1,6 @@
 using System;
 using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Host;
+using Microsoft.Extensions.Logging;
 
 namespace AllReady.Processing
 {
@@ -10,9 +10,9 @@ namespace AllReady.Processing
         // local storage emulator.
 
         [FunctionName("QueueTest")]
-        public static void Run([QueueTrigger("queue-test", Connection = "")]string item, TraceWriter log)
+        public static void Run([QueueTrigger("queue-test")]string item, ILogger log)
         {            
-            log.Info($"A message was dequeued from the queue-test queue: {item}");
+            log.LogInformation($"A message was dequeued from the queue-test queue: {item}");
         }
     }
 }
